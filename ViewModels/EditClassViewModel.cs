@@ -1,4 +1,5 @@
 ﻿using Projekt.Models;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Projekt.ViewModels
@@ -26,7 +27,30 @@ namespace Projekt.ViewModels
 
         public void SaveData()
         {
-            CloseDialog(true);
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                MessageBox.Show("Nazwa nie może być pusta", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            using var db = new AppDbContext();
+
+            var classInDb = db.Classes.FirstOrDefault(c => c.Id == ClassToEdit.Id);
+            if (classInDb != null)
+            {
+                // Sprawdzamy czy zmiana loginu nie koliduje z innym użytkownikiem
+                if (classInDb.Name != Name && db.Classes.Any(c => c.Name.ToLower() == name.ToLower()))
+                {
+                    MessageBox.Show("Użytkownik o podanym loginie już istnieje!");
+                    return;
+                }
+
+                classInDb.Name = name;
+                db.SaveChanges();
+
+                CloseDialog(true);
+            }
+
         }
 
         public void Cancel()

@@ -1,0 +1,21 @@
+﻿<Window x:Class="Projekt.Windows.AddExitDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekt.Windows"
+        mc:Ignorable="d"
+        Title="Dodaj wyjście" Height="250" Width="400">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label>Czas wyjścia:</Label>
+            <TextBox Width="200" Margin="5" Text="{Binding Time, Mode=TwoWay}"/>
+        </StackPanel>
+        <Label>Powód:</Label>
+        <TextBox AcceptsReturn="True" Height="80" Text="{Binding Reason, Mode=TwoWay}"></TextBox>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button IsDefault="True" Width="100" Margin="5">Dodaj</Button>
+            <Button IsCancel="True" Width="100" Margin="5">Anuluj</Button>
+        </StackPanel>
+    </StackPanel>
+</Window>

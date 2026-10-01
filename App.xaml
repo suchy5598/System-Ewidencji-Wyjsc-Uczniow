@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:Projekt"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!-- Rejestracja konwertera pod kluczem BoolToStatusConv -->
+        <local:BooleanToStatusConverter x:Key="BoolToStatusConv" />
     </Application.Resources>
 </Application>

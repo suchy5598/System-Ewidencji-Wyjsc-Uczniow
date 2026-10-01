@@ -29,6 +29,7 @@ namespace Projekt.ViewModels
         public ICommand ShowClassesCommand { get; }
 
         public bool IsAdmin => UserSession.CurrentUser?.UserType == Models.UserType.Admin;
+        public bool IsTeacher => UserSession.CurrentUser?.UserType == Models.UserType.Teacher;
 
         public string UserName
         {

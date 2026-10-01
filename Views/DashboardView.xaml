@@ -47,7 +47,7 @@
 
         <StackPanel Grid.Column="0" Grid.Row="1" Background="CornflowerBlue">
             <Button Command="{Binding ShowExitsCommand}" Margin="5,2">Wyjścia</Button>
-            <Button Command="{Binding ShowStatisticsCommand}" Margin="5,2">Statystyki</Button>
+            <Button Command="{Binding ShowStatisticsCommand}"  Visibility="{Binding IsTeacher, Converter={StaticResource BoolToVis}}" Margin="5,2">Statystyki</Button>
             <Button Command="{Binding ShowAccountsCommand}" Margin="5,2" Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">Konta</Button>
             <Button Command="{Binding ShowClassesCommand}" Margin="5,2" Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">Klasy</Button>
             <Button Command="{Binding ShowStudentsCommand}" Margin="5,2" Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">Uczniowie</Button>
