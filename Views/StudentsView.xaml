@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Projekt.Views.StudentsView"
+                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Projekt.Views"
+             mc:Ignorable="d" 
+             Background="AliceBlue"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Width="300" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
+            <TextBlock Margin="10" FontSize="20" HorizontalAlignment="Center">Uczniowie</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                <Button Margin="3" Padding="3" Command="{Binding RefreshCommand}">Odśwież</Button>
+                <Button Margin="3" Padding="3" Command="{Binding DeleteCommand}">Usuń</Button>
+                <Button Margin="3" Padding="3" Command="{Binding EditCommand}">Edytuj</Button>
+            </StackPanel>
+            <DataGrid MaxHeight="225" ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding Students}" SelectedItem="{Binding SelectedStudent, Mode=TwoWay}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" GridLinesVisibility="Horizontal" HeadersVisibility="Column" RowHeight="30">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="30" />
+                    <DataGridTextColumn Header="Imię" Binding="{Binding Name}" Width="2*" />
+                    <DataGridTextColumn Header="Nazwisko" Binding="{Binding Surname}" Width="2*" />
+                    <DataGridTextColumn Header="Klasa" Binding="{Binding SchoolClass.Name}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Width="300" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
+            <TextBlock Margin="10" FontSize="20" HorizontalAlignment="Center">Dodawanie ucznia</TextBlock>
+            <Label>Podaj imię:</Label>
+            <TextBox x:Name="NameBox" Margin="5" />
+            <Label>Podaj nazwisko:</Label>
+            <TextBox x:Name="SurnameBox" Margin="5"/>
+            <Label>Wybierz klasę:</Label>
+            <ComboBox x:Name="ClassBox" ItemsSource="{Binding Classes}" SelectedItem="{Binding SelectedClass, Mode=TwoWay}" DisplayMemberPath="Name" SelectedValuePath="Id" Margin="5"/>
+            <Button Width="100" Margin="5" Click="Button_Click">Dodaj ucznia</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

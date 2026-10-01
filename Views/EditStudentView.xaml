@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Projekt.Views.EditStudentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Projekt.Views"
+             mc:Ignorable="d" 
+                      d:DesignHeight="200" d:DesignWidth="400"
+         Background="White">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Label HorizontalContentAlignment="Center">Imię</Label>
+        <TextBox x:Name="NameBox" Width="200" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label HorizontalContentAlignment="Center">Nazwisko</Label>
+        <TextBox x:Name="SurnameBox" Width="200" Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label HorizontalContentAlignment="Center">Klasa</Label>
+        <ComboBox x:Name="ClassBox" ItemsSource="{Binding Classes}" SelectedItem="{Binding Class, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedValuePath="Id"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="OkButton" Command="{Binding SaveCommand}" Grid.Column="0" Margin="3" IsDefault="True">OK</Button>
+            <Button x:Name="CancelButton" Command="{Binding CancelCommand}" Grid.Column="1" Margin="3" IsCancel="True">Anuluj</Button>
+        </Grid>
+    </StackPanel>
+</UserControl>
