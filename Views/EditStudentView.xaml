@@ -9,9 +9,9 @@
          Background="White">
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
         <Label HorizontalContentAlignment="Center">Imię</Label>
-        <TextBox x:Name="NameBox" Width="200" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Style="{StaticResource RoundedTextBoxStyle}" x:Name="NameBox" Width="200" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
         <Label HorizontalContentAlignment="Center">Nazwisko</Label>
-        <TextBox x:Name="SurnameBox" Width="200" Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Style="{StaticResource RoundedTextBoxStyle}" x:Name="SurnameBox" Width="200" Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}"/>
         <Label HorizontalContentAlignment="Center">Klasa</Label>
         <ComboBox x:Name="ClassBox" ItemsSource="{Binding Classes}" SelectedItem="{Binding Class, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedValuePath="Id"/>
         <Grid>
@@ -19,8 +19,8 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="OkButton" Command="{Binding SaveCommand}" Grid.Column="0" Margin="3" IsDefault="True">OK</Button>
-            <Button x:Name="CancelButton" Command="{Binding CancelCommand}" Grid.Column="1" Margin="3" IsCancel="True">Anuluj</Button>
+            <Button x:Name="OkButton" Command="{Binding SaveCommand}" Style="{StaticResource SuccessButtonStyle}" Grid.Column="0" Margin="3" IsDefault="True">OK</Button>
+            <Button x:Name="CancelButton" Command="{Binding CancelCommand}" Style="{StaticResource PrimaryButtonStyle}" Grid.Column="1" Margin="3" IsCancel="True">Anuluj</Button>
         </Grid>
     </StackPanel>
 </UserControl>

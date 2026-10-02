@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Projekt.Views"
              mc:Ignorable="d" 
-             Background="AliceBlue"
+             Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -16,9 +16,9 @@
         <StackPanel Grid.Column="0" Width="300" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
             <TextBlock Margin="10" FontSize="20" HorizontalAlignment="Center">Klasy</TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <Button Margin="3" Padding="3" Command="{Binding RefreshCommand}">Odśwież</Button>
-                <Button Margin="3" Padding="3" Command="{Binding DeleteCommand}">Usuń</Button>
-                <Button Margin="3" Padding="3" Command="{Binding EditCommand}">Edytuj</Button>
+                <Button Style="{StaticResource PrimaryButtonStyle}" Margin="3" Command="{Binding RefreshCommand}">Odśwież</Button>
+                <Button Style="{StaticResource PrimaryButtonStyle}" Margin="3" Command="{Binding DeleteCommand}">Usuń</Button>
+                <Button Style="{StaticResource PrimaryButtonStyle}" Margin="3" Command="{Binding EditCommand}">Edytuj</Button>
             </StackPanel>
             <DataGrid MaxHeight="225" ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding Classes}" SelectedItem="{Binding SelectedClass, Mode=TwoWay}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" GridLinesVisibility="Horizontal" HeadersVisibility="Column" RowHeight="30">
                 <DataGrid.Columns>
@@ -31,8 +31,8 @@
         <StackPanel Grid.Column="1" Width="300" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
             <TextBlock Margin="10" FontSize="20" HorizontalAlignment="Center">Tworzenie klasy</TextBlock>
             <Label>Nazwa klasy:</Label>
-            <TextBox x:Name="NameBox" Margin="5" />
-            <Button Width="100" Margin="5" Click="Button_Click">Stwórz klasę</Button>
+            <TextBox Style="{StaticResource RoundedTextBoxStyle}" x:Name="NameBox" Margin="5" />
+            <Button Style="{StaticResource SuccessButtonStyle}" Width="100" Margin="5" Click="Button_Click">Stwórz klasę</Button>
         </StackPanel>
     </Grid>
 </UserControl>

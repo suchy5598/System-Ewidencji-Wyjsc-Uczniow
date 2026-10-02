@@ -2,6 +2,7 @@
 using Projekt.Models;
 using Projekt.Windows;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Projekt.ViewModels
@@ -36,11 +37,13 @@ namespace Projekt.ViewModels
 
         public ICommand RefreshCommand { get; }
         public ICommand ExitCommand { get; }
+        public ICommand ReturnCommand { get; }
 
         public ExitsManagementViewModel()
         {
             RefreshCommand = new RelayCommand(LoadStudents);
-            ExitCommand = new RelayCommand(ExitSelected);
+            ExitCommand = new RelayCommand(ExitSelected, () => selectedStudent != null && selectedStudent.IsInClass);
+            ReturnCommand = new RelayCommand(ReturnSelected, () => selectedStudent != null && !selectedStudent.IsInClass);
             LoadStudents();
             LoadClasses();
         }
@@ -72,10 +75,48 @@ namespace Projekt.ViewModels
 
         public void ExitSelected()
         {
-            if (selectedStudent != null)
+            if (selectedStudent != null && selectedStudent.IsInClass)
             {
-                //var dialog = new AddExitDialog(selectedStudent);
-                //bool? result = dialog.ShowDialog();
+                // 1. Podpinamy nasz ViewModel
+                var exitVm = new AddExitViewModel(SelectedStudent);
+
+                // 2. Otwieramy to samo uniwersalne okno EditDialogWindow
+                var dialog = new EditDialog
+                {
+                    DataContext = exitVm,
+                    Owner = Application.Current.MainWindow
+                };
+
+                if (dialog.ShowDialog() == true)
+                {
+                    LoadStudents();
+                }
+            }
+        }
+
+        public void ReturnSelected()
+        {
+            if (selectedStudent != null && !selectedStudent.IsInClass)
+            {
+                using var db = new AppDbContext();
+                var activeExit = db.Exits.FirstOrDefault(e => e.StudentId == selectedStudent.Id && e.ReturnTime == default);
+
+                if (activeExit == null) return; 
+
+                // 1. Podpinamy nasz ViewModel
+                var exitVm = new EndExitViewModel(SelectedStudent, activeExit.ExitTime, activeExit.Reason);
+
+                // 2. Otwieramy to samo uniwersalne okno EditDialogWindow
+                var dialog = new EditDialog
+                {
+                    DataContext = exitVm,
+                    Owner = Application.Current.MainWindow
+                };
+
+                if (dialog.ShowDialog() == true)
+                {
+                    LoadStudents();
+                }
             }
         }
     }

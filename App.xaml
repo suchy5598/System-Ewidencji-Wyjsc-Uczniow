@@ -5,6 +5,13 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <!-- Rejestracja konwertera pod kluczem BoolToStatusConv -->
-        <local:BooleanToStatusConverter x:Key="BoolToStatusConv" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Ścieżka do Twojego pliku ze stylami -->
+                <!-- Jeśli plik jest w folderze 'Styles', ścieżka to: Styles/ThemeResources.xaml -->
+                <ResourceDictionary Source="/Styles/ThemeResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:BooleanToStatusConverter x:Key="BoolToStatusConv" />
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

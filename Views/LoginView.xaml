@@ -12,13 +12,13 @@
             <!-- Przycisk symulujący zalogowanie i przejście do pulpitu -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
                 <Label Content="Login:"/>
-                <TextBox x:Name="LoginBox" Width="150" VerticalAlignment="Center" KeyDown="LoginBox_KeyDown" />
+                <TextBox Style="{StaticResource RoundedTextBoxStyle}" x:Name="LoginBox" Width="150" VerticalAlignment="Center" KeyDown="LoginBox_KeyDown" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
                 <Label Content="Hasło:"/>
-                <PasswordBox x:Name="PassBox" Width="150" VerticalAlignment="Center"  KeyDown="PassBox_KeyDown"/>
+                <PasswordBox Style="{StaticResource RoundedPasswordBoxStyle}" x:Name="PassBox" Width="150" VerticalAlignment="Center"  KeyDown="PassBox_KeyDown"/>
             </StackPanel>
-            <Button x:Name="LoginButton" Content="Zaloguj się" Width="150" Height="35" Click="Button_Click"/>
+            <Button  Style="{StaticResource PrimaryButtonStyle}" x:Name="LoginButton" Content="Zaloguj się" Width="150" Height="35" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Projekt.Views.EndExitView"
+                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:local="clr-namespace:Projekt.Windows"
+mc:Ignorable="d"
+Height="250" Width="400" Background="White">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label>Czas wyjścia:</Label>
+            <TextBox Width="200" Margin="5" Text="{Binding ExitDateTime}" IsReadOnly="True" IsEnabled="False"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label>Czas powrotu:</Label>
+            <TextBox Width="200" Margin="5" Text="{Binding ReturnDateTime}"/>
+        </StackPanel>
+        <Label>Powód:</Label>
+        <TextBox AcceptsReturn="True" Height="45" Text="{Binding Reason, Mode=TwoWay}" IsReadOnly="True" IsEnabled="False"></TextBox>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button IsDefault="True" Width="100" Margin="5" Command="{Binding EndCommand}" Style="{StaticResource SuccessButtonStyle}">Zakończ wyjście</Button>
+            <Button IsCancel="True" Width="100" Margin="5" Command="{Binding ExitCommand}" Style="{StaticResource PrimaryButtonStyle}">Anuluj</Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

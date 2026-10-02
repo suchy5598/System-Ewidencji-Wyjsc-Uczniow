@@ -28,7 +28,7 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </UserControl.Resources>
 
-    <Grid Background="CornflowerBlue">
+    <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="5*"/>
@@ -41,16 +41,16 @@
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" >
             <TextBlock Text="{Binding UserName}" FontSize="15" Margin="5"/>
-            <Button Content="Wyloguj" Height="25" Margin="5"
+            <Button Style="{StaticResource PrimaryButtonStyle}" Content="Wyloguj"
                     Command="{Binding DataContext.ShowLoginCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="0" Grid.Row="1" Background="CornflowerBlue">
-            <Button Command="{Binding ShowExitsCommand}" Margin="5,2">Wyjścia</Button>
-            <Button Command="{Binding ShowStatisticsCommand}"  Visibility="{Binding IsTeacher, Converter={StaticResource BoolToVis}}" Margin="5,2">Statystyki</Button>
-            <Button Command="{Binding ShowAccountsCommand}" Margin="5,2" Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">Konta</Button>
-            <Button Command="{Binding ShowClassesCommand}" Margin="5,2" Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">Klasy</Button>
-            <Button Command="{Binding ShowStudentsCommand}" Margin="5,2" Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">Uczniowie</Button>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <Button Style="{StaticResource PrimaryButtonStyle}" Command="{Binding ShowExitsCommand}" Margin="5,2">Wyjścia</Button>
+            <Button Style="{StaticResource PrimaryButtonStyle}" Command="{Binding ShowStatisticsCommand}"  Visibility="{Binding IsTeacher, Converter={StaticResource BoolToVis}}" Margin="5,2">Statystyki</Button>
+            <Button Style="{StaticResource PrimaryButtonStyle}" Command="{Binding ShowAccountsCommand}" Margin="5,2" Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">Konta</Button>
+            <Button Style="{StaticResource PrimaryButtonStyle}" Command="{Binding ShowClassesCommand}" Margin="5,2" Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">Klasy</Button>
+            <Button Style="{StaticResource PrimaryButtonStyle}" Command="{Binding ShowStudentsCommand}" Margin="5,2" Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">Uczniowie</Button>
         </StackPanel>
 
         <ContentControl Grid.Column="1" Grid.Row="1"  Content="{Binding CurrentDashboardView}"/>

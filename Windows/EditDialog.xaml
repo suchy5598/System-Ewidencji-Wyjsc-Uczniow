@@ -20,6 +20,12 @@
         <DataTemplate DataType="{x:Type vm:EditAccountViewModel}">
             <views:EditAccountView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:AddExitViewModel}">
+            <views:AddExitView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:EndExitViewModel}">
+            <views:EndExitView />
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Projekt.Views"
              mc:Ignorable="d" 
-             Background="AliceBlue"
+             Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -15,8 +15,9 @@
         <StackPanel Grid.Column="0" Width="300" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
             <TextBlock Margin="10" FontSize="20" HorizontalAlignment="Center">Wyjścia</TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <Button Margin="3" Padding="3" Command="{Binding RefreshCommand}">Odśwież</Button>
-                <Button Margin="3" Padding="3" Command="{Binding ExitCommand}">Wyjście</Button>
+                <Button Style="{StaticResource PrimaryButtonStyle}" Margin="3"  Command="{Binding RefreshCommand}">Odśwież</Button>
+                <Button Style="{StaticResource PrimaryButtonStyle}" Margin="3" Command="{Binding ExitCommand}">Wyjście</Button>
+                <Button Style="{StaticResource PrimaryButtonStyle}" Margin="3" Command="{Binding ReturnCommand}">Powrót</Button>
             </StackPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
