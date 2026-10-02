@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Projekt.Models;
+using Projekt.Windows;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -71,7 +72,11 @@ namespace Projekt.ViewModels
 
         public void ExitSelected()
         {
-
+            if (selectedStudent != null)
+            {
+                //var dialog = new AddExitDialog(selectedStudent);
+                //bool? result = dialog.ShowDialog();
+            }
         }
     }
 }
